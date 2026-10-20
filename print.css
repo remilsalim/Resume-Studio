@@ -1,0 +1,144 @@
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print,
+  .editor,
+  .app-header,
+  .preview-toolbar {
+    display: none !important;
+  }
+
+  .workspace {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .preview-area {
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-paper {
+    box-sizing: border-box !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    height: auto !important;
+    padding: var(--print-page-padding, 15mm) !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    color: var(--resume-body-color, #202939) !important;
+    background: #fff !important;
+  }
+
+  .resume-header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-bottom-color: var(--resume-accent-color, #2356a8) !important;
+  }
+
+  .resume-name {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-name-size, 27px) !important;
+    color: var(--resume-name-color, #202939) !important;
+  }
+
+  .resume-role {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-role-size, 12px) !important;
+    color: var(--resume-accent-color, #2356a8) !important;
+  }
+
+  .contact-line {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-contact-size, 9px) !important;
+  }
+
+  .resume-section {
+    margin-bottom: var(--resume-section-spacing, 15px) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .resume-section h2 {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-heading-size, 11px) !important;
+    color: var(--resume-heading-color, #2356a8) !important;
+  }
+
+  .summary-text {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-summary-size, 10px) !important;
+    color: var(--resume-body-color, #202939) !important;
+    line-height: var(--resume-line-spacing, 1.5) !important;
+  }
+
+  .entry-title {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-entry-title-size, 11px) !important;
+    color: var(--resume-body-color, #202939) !important;
+  }
+
+  .entry-subtitle {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-subtitle-size, 10px) !important;
+    color: var(--resume-body-color, #202939) !important;
+    line-height: var(--resume-line-spacing, 1.5) !important;
+  }
+
+  .entry-date {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-date-size, 9px) !important;
+    color: var(--resume-body-color, #202939) !important;
+  }
+
+  .entry-description {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-description-size, 10px) !important;
+    color: var(--resume-body-color, #202939) !important;
+    line-height: var(--resume-line-spacing, 1.5) !important;
+  }
+
+  .skills-line {
+    font-family: var(--resume-font-family, Arial, sans-serif) !important;
+    font-size: var(--resume-skills-size, 10px) !important;
+    color: var(--resume-body-color, #202939) !important;
+    line-height: var(--resume-line-spacing, 1.5) !important;
+  }
+
+  .resume-entry {
+    margin-bottom: var(--resume-entry-spacing, 9px) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .resume-paper,
+  .preview-area {
+    overflow: visible !important;
+  }
+}

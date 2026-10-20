@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A customizable resume builder with live preview and PDF export.">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+
+<body>
+  <header class="app-header no-print">
+    <div>
+      <p class="eyebrow">RESUME STUDIO</p>
+      <h1>Resume Builder</h1>
+      <p class="muted">Create and customize your resume, then save it as a PDF.</p>
+    </div>
+    <button id="downloadPdf" class="button button-primary" type="button">
+      Export to PDF
+    </button>
+  </header>
+
+  <main class="workspace">
+    <section class="editor no-print" aria-label="Resume editor">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR DETAILS</p>
+          <h2>Edit resume</h2>
+        </div>
+        <button id="resetForm" class="button button-quiet" type="button">
+          Reset
+        </button>
+      </div>
+
+      <form id="resumeForm">
+
+        <!-- RESUME DESIGN -->
+        <fieldset>
+          <legend>Resume Design</legend>
+          <p class="helper">
+            Customize fonts, colors, alignment, and spacing.
+          </p>
+
+          <label>
+            Font family
+            <select id="fontFamily" name="fontFamily">
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Inter, Arial, sans-serif">Inter</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+            </select>
+          </label>
+
+          <p class="design-subheading">Font sizes</p>
+
+          <div class="field-grid">
+            <label>
+              Name (px)
+              <input id="nameSize" type="number" min="18" max="48" value="27">
+            </label>
+
+            <label>
+              Target role (px)
+              <input id="roleSize" type="number" min="10" max="24" value="12">
+            </label>
+
+            <label>
+              Section headings (px)
+              <input id="headingSize" type="number" min="9" max="20" value="11">
+            </label>
+
+            <label>
+              Contact details (px)
+              <input id="contactSize" type="number" min="8" max="14" value="9">
+            </label>
+
+            <label>
+              Summary (px)
+              <input id="summarySize" type="number" min="9" max="18" value="10">
+            </label>
+
+            <label>
+              Entry titles (px)
+              <input id="entryTitleSize" type="number" min="9" max="18" value="11">
+            </label>
+
+            <label>
+              Subtitles (px)
+              <input id="subtitleSize" type="number" min="8" max="16" value="10">
+            </label>
+
+            <label>
+              Dates (px)
+              <input id="dateSize" type="number" min="8" max="14" value="9">
+            </label>
+
+            <label>
+              Descriptions (px)
+              <input id="descriptionSize" type="number" min="9" max="16" value="10">
+            </label>
+
+            <label>
+              Skills (px)
+              <input id="skillsSize" type="number" min="9" max="16" value="10">
+            </label>
+          </div>
+
+          <p class="design-subheading">Colors</p>
+
+          <div class="field-grid">
+            <label>
+              Name color
+              <input id="nameColor" type="color" value="#202939">
+            </label>
+
+            <label>
+              Heading color
+              <input id="headingColor" type="color" value="#2356a8">
+            </label>
+
+            <label>
+              Body text color
+              <input id="bodyColor" type="color" value="#202939">
+            </label>
+
+            <label>
+              Accent color
+              <input id="accentColor" type="color" value="#2356a8">
+            </label>
+          </div>
+
+          <p class="design-subheading">Alignment</p>
+
+          <label>
+            Header alignment
+            <select id="headerAlign">
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+
+          <label>
+            Section heading alignment
+            <select id="sectionAlign">
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+
+          <label>
+            Content alignment
+            <select id="contentAlign">
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+              <option value="justify">Justify</option>
+            </select>
+          </label>
+
+          <p class="design-subheading">Spacing</p>
+
+          <div class="field-grid">
+            <label>
+              Page padding (mm)
+              <input id="pagePadding" type="number" min="5" max="30" value="15">
+            </label>
+
+            <label>
+              Section spacing (px)
+              <input id="sectionSpacing" type="number" min="4" max="30" value="15">
+            </label>
+
+            <label>
+              Entry spacing (px)
+              <input id="entrySpacing" type="number" min="2" max="20" value="9">
+            </label>
+
+            <label>
+              Line spacing
+              <input id="lineSpacing" type="number" min="1" max="2.5" step="0.1" value="1.5">
+            </label>
+          </div>
+
+          <button id="resetDesign" class="button button-secondary" type="button">
+            Reset design
+          </button>
+        </fieldset>
+
+        <!-- PERSONAL DETAILS -->
+        <fieldset>
+          <legend>Personal details</legend>
+
+          <div class="field-grid">
+            <label>
+              Full name
+              <input name="fullName" placeholder="e.g. Alex Thomas">
+            </label>
+
+            <label>
+              Target role
+              <input name="targetRole" placeholder="e.g. Software Developer">
+            </label>
+
+            <label>
+              Email
+              <input name="email" type="email" placeholder="alex@email.com">
+            </label>
+
+            <label>
+              Phone
+              <input name="phone" type="tel" placeholder="+91 98765 43210">
+            </label>
+
+            <label>
+              Location
+              <input name="location" placeholder="City, State">
+            </label>
+
+            <label>
+              LinkedIn URL
+              <input name="linkedin" type="url" placeholder="https://linkedin.com/in/...">
+            </label>
+
+            <label>
+              GitHub / Portfolio
+              <input name="portfolio" type="url" placeholder="https://github.com/...">
+            </label>
+          </div>
+
+          <label>
+            Professional summary
+            <textarea name="summary" rows="3"
+              placeholder="Write 2–3 concise lines about your background, strengths, and career goals."></textarea>
+          </label>
+        </fieldset>
+
+        <!-- EDUCATION -->
+        <fieldset>
+          <legend>Education</legend>
+          <div id="educationEntries" class="entry-list"></div>
+          <button class="button button-secondary add-entry" type="button" data-add="education">
+            + Add education
+          </button>
+        </fieldset>
+
+        <!-- SKILLS -->
+        <fieldset>
+          <legend>Skills</legend>
+
+          <label>
+            Technical skills
+            <input name="technicalSkills" placeholder="Python, JavaScript, HTML, CSS">
+          </label>
+
+          <label>
+            Tools and other skills
+            <input name="otherSkills" placeholder="Git, Excel, communication">
+          </label>
+        </fieldset>
+
+        <!-- CERTIFICATIONS -->
+        <fieldset>
+          <legend>Certifications &amp; Training</legend>
+          <p class="helper">
+            List completed, relevant credentials first. Avoid listing the same course twice.
+          </p>
+
+          <div id="certificationEntries" class="entry-list"></div>
+
+          <button class="button button-secondary add-entry" type="button" data-add="certification">
+            + Add certification / training
+          </button>
+        </fieldset>
+
+        <!-- EXPERIENCE -->
+        <fieldset>
+          <legend>Internship / Experience</legend>
+          <div id="internshipEntries" class="entry-list"></div>
+
+          <button class="button button-secondary add-entry" type="button" data-add="internship">
+            + Add internship / experience
+          </button>
+        </fieldset>
+
+        <!-- PROJECTS -->
+        <fieldset>
+          <legend>Projects</legend>
+          <div id="projectEntries" class="entry-list"></div>
+
+          <button class="button button-secondary add-entry" type="button" data-add="project">
+            + Add project
+          </button>
+        </fieldset>
+
+        <fieldset id="sectionOrderFieldset">
+          <legend>Section Order</legend>
+
+          <p class="helper">
+            Use the arrows to change the order of sections in your resume.
+          </p>
+
+          <div id="sectionOrderControls"></div>
+
+          <button type="button" id="resetSectionOrder" class="button button-secondary">
+            Reset section order
+          </button>
+        </fieldset>
+
+
+      </form>
+
+      <p class="helper privacy-note">
+        Your details stay in this browser page. This demo does not send them
+        to a server or save them after you close the page.
+      </p>
+    </section>
+
+    <!-- LIVE PREVIEW -->
+    <section class="preview-area" aria-label="Live resume preview">
+      <div class="preview-toolbar no-print">
+        <div>
+          <strong>Live preview</strong>
+          <span class="muted">A4 page</span>
+        </div>
+        <span class="status-dot">Updates as you type</span>
+      </div>
+
+      <article id="resumePreview" class="resume-paper">
+        <!-- Live preview is rendered by script.js -->
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
